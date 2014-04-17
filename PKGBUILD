@@ -8,17 +8,17 @@ arch=('i686' 'x86_64')
 url=http://inai.de/projects/hxtools/
 license=('GPL3')
 depends=('libhx>=3.15' perl util-linux pciutils libxcb)
-makedepends=('sed')
+makedepends=()
 source=(http://jftp.inai.de/hxtools/hxtools-$pkgver.tar.xz)
 sha256sums=('a66a197a437c23e78cddffcfaf07e6bada56736b6ba1766c3b4333e29ba2a589')
 
 build() {
-  cd $srcdir/$pkgname-$pkgver
+  cd "$srcdir/$pkgname-$pkgver"
   ./configure --libexecdir=/usr/lib --prefix=/usr --sysconfdir=/etc --localstatedir=/var
   make
 }
 
 package() {
-  cd $srcdir/$pkgname-$pkgver
+  cd "$srcdir/$pkgname-$pkgver"
   make DESTDIR=$pkgdir install
 }
